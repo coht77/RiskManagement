@@ -1,6 +1,47 @@
 {
-  "scopes": [],
-  "attributes": [],
-  "role-templates": [],
-  "authorities-inheritance": false
+  "xsappname": "RiskManagement",
+  "tenant-mode": "dedicated",
+  "description": "Configuración de Seguridad y Roles para Risk Management",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.RiskRead",
+      "description": "Permiso para leer registros de riesgos"
+    },
+    {
+      "name": "$XSAPPNAME.RiskWrite",
+      "description": "Permiso para crear, editar o eliminar registros de riesgos"
+    },
+    {
+      "name": "$XSAPPNAME.RiskViewer",
+      "description": "RiskViewer"
+    },
+    {
+      "name": "$XSAPPNAME.RiskManager",
+      "description": "RiskManager"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "RiskViewer",
+      "description": "Rol de lectura para riesgos",
+      "scope-references": [
+        "$XSAPPNAME.RiskRead"
+      ]
+    },
+    {
+      "name": "RiskManager",
+      "description": "Rol de administración total para riesgos",
+      "scope-references": [
+        "$XSAPPNAME.RiskRead",
+        "$XSAPPNAME.RiskWrite"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "credential-types": [
+      "binding-secret",
+      "x509"
+    ]
+  },
+  "attributes": []
 }
